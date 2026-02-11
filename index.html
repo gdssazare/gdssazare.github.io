@@ -64,7 +64,7 @@ h2{
   margin-bottom:20px;
 }
 
-/* ===== GALLERY GRID ===== */
+/* ===== GALLERY ===== */
 .gallery{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
@@ -80,12 +80,11 @@ h2{
 
 /* ===== ROBOT ICON ===== */
 .robot-icon{
-  position: fixed;
-  top: 50%;
-  right: 15px;
-  transform: translateY(-50%);
-  z-index: 9999;
-  cursor: pointer;
+  position:fixed;
+  right:15px;
+  bottom:90px;
+  z-index:9999;
+  cursor:pointer;
 }
 .robot-icon img{
   width:68px;
@@ -93,143 +92,107 @@ h2{
   border-radius:50%;
   padding:6px;
   box-shadow:0 8px 20px rgba(0,0,0,.25);
-  animation: float 3s ease-in-out infinite;
+  animation:float 3s ease-in-out infinite;
 }
 
-/* Robot motion */
 @keyframes float{
-  0%{transform: translateY(0)}
-  50%{transform: translateY(-12px)}
-  100%{transform: translateY(0)}
-}
-
-/* Fake message */
-.robot-msg{
-  position:absolute;
-  right:85px;
-  top:50%;
-  transform:translateY(-50%);
-  background:linear-gradient(135deg,#0b4ea2,#1fa463);
-  color:#fff;
-  padding:10px 14px;
-  border-radius:16px;
-  font-size:13px;
-  white-space:nowrap;
-  box-shadow:0 6px 15px rgba(0,0,0,.25);
-  opacity:0;
-  animation:showMsg .8s forwards;
-}
-@keyframes showMsg{
-  from{opacity:0; transform:translateY(-50%) translateX(10px);}
-  to{opacity:1; transform:translateY(-50%) translateX(0);}
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+  100%{transform:translateY(0)}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <!-- CANZA PATH DIN LOGO IDAN YA BANBANTA -->
-<img src="InShot_20260210_004248690.jpg" alt="GDSS Azare Logo">
+<!-- ===== HERO ===== -->
+<div class="hero" id="home">
+  <img src="InShot_20260210_004248690.jpg" alt="GDSS Azare Logo">
   <h1>Government Day Secondary School, Azare</h1>
   <p>Building Knowledge, Character & Future Leaders</p>
 </div>
 
-<!-- NAV -->
+<!-- ===== NAV ===== -->
 <nav>
-  <a href="#">Home</a>
-  <a href="#">About</a>
-  <a href="#">Administration</a>
-  <a href="#">Academics</a>
-  <a href="#">Staff</a>
-  <a href="#">News</a>
-  <a href="#">Gallery</a>
-  <a href="#">Contact</a>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#administration">Administration</a>
+  <a href="#academics">Academics</a>
+  <a href="#staff">Staff</a>
+  <a href="#news">News</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<!-- WELCOME -->
-<section>
-  <h2>Welcome to GDSS Azare</h2>
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <h2>About GDSS Azare</h2>
   <p style="text-align:center">
     Government Day Secondary School, Azare is committed to excellence
     in education, discipline and character building.
   </p>
 </section>
 
-<!-- GALLERY -->
-<section>
-  <h2>School Gallery</h2>
-  <div class="gallery">
-    <!-- MAYE GURBIN HOTUNA -->
-
-  </div>
- 
+<!-- ===== ADMIN ===== -->
+<section id="administration">
+  <h2>Administration</h2>
+  <p style="text-align:center">
+    The school administration is dedicated to quality leadership
+    and effective management.
+  </p>
 </section>
 
-<!-- ROBOT -->
-<div class="robot-icon">
-  <!-- ANAN MA LOGO AKE AMFANI DA SHI -->
-  <img src="logo.png" alt="GDSS Chat Robot">
-  <div class="robot-msg">
-    👋 Welcome to GDSS Azare<br>
-    🗣️ Ask me Anything 
+<!-- ===== ACADEMICS ===== -->
+<section id="academics">
+  <h2>Academics</h2>
+  <p style="text-align:center">
+    We offer a strong academic curriculum that prepares students
+    for future success.
+  </p>
+</section>
+
+<!-- ===== STAFF ===== -->
+<section id="staff">
+  <h2>Our Staff</h2>
+  <p style="text-align:center">
+    Our teachers are qualified, experienced and dedicated.
+  </p>
+</section>
+
+<!-- ===== NEWS ===== -->
+<section id="news">
+  <h2>School News</h2>
+  <p style="text-align:center">
+    Latest updates and announcements from GDSS Azare.
+  </p>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery">
+  <h2>School Gallery</h2>
+  <div class="gallery">
+    <!-- zaka saka hotuna anan -->
   </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p style="text-align:center">
+    Email: info@gdssazare.edu.ng <br>
+    Location: Azare, Bauchi State
+  </p>
+</section>
+
+<!-- ===== ROBOT ICON ===== -->
+<div class="robot-icon" onclick="window.chatbase('open')">
+  <img src="logo.png" alt="GDSS Chat Robot">
 </div>
 
-<!-- JS -->
+<!-- ===== CHATBASE (SABO – SAU DAYA) ===== -->
 <script>
-document.addEventListener("DOMContentLoaded", function(){
-  const robot = document.querySelector(".robot-icon");
-  if(robot){
-    robot.addEventListener("click", function(){
-      if(window.chatbase){
-        window.chatbase("open");
-      }else{
-        alert("Welcome to GDSS Azare 👋\nHow can I help you?");
-      }
-    });
-  }
-});
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="r50pDK2Y6zvscibnVNFTr";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
-  <script>
-document.addEventListener("DOMContentLoaded", function(){
-  const robot = document.querySelector(".robot-icon");
-  if(robot){
-    robot.addEventListener("click", function(){
-      if(window.chatbase){
-        window.chatbase("open");
-      }else{
-        alert("Welcome to GDSS Azare 👋");
-      }
-    });
-  }
-});
-  </script>
-<script>
-(function(){
-  if(!window.chatbase || window.chatbase("getState")!=="initialized"){
-    window.chatbase=(...arguments)=>{
-      if(!window.chatbase.q){window.chatbase.q=[]}
-      window.chatbase.q.push(arguments)
-    };
-    window.chatbase=new Proxy(window.chatbase,{
-      get(target,prop){
-        if(prop==="q"){return target.q}
-        return(...args)=>target(prop,...args)
-      }
-    })
-  }
-  const onLoad=function(){
-    const script=document.createElement("script");
-    script.src="https://www.chatbase.co/embed.min.js";
-    script.id="_ym0GFkf6Wg6GUmdgEUMV"; /* ID naka */
-    script.domain="www.chatbase.co";
-    document.body.appendChild(script)
-  };
-  if(document.readyState==="complete"){onLoad()}
-  else{window.addEventListener("load",onLoad)}
-})();
-</script>
+
 </body>
-    </html>
+</html>
