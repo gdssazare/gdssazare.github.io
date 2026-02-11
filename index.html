@@ -100,6 +100,29 @@ h2{
   50%{transform:translateY(-12px)}
   100%{transform:translateY(0)}
 }
+  .robot-msg{
+  position:absolute;
+  right:85px;
+  bottom:20px;
+  background:linear-gradient(135deg,#0b4ea2,#1fa463);
+  color:#fff;
+  padding:8px 14px;
+  border-radius:16px;
+  font-size:13px;
+  white-space:nowrap;
+  box-shadow:0 6px 15px rgba(0,0,0,.25);
+  opacity:0;
+  animation:robotTalk 4s infinite;
+}
+
+/* Animation: 2s show, 2s hide */
+@keyframes robotTalk{
+  0%{opacity:0; transform:translateX(10px)}
+  25%{opacity:1; transform:translateX(0)}
+  50%{opacity:1}
+  75%{opacity:0; transform:translateX(10px)}
+  100%{opacity:0}
+  }
 </style>
 </head>
 
